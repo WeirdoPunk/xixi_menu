@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 192 192">
+  <defs>
+    <linearGradient id="sky" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#8fc2fa"/><stop offset=".48" stop-color="#eaf5ff"/><stop offset="1" stop-color="#7db4f3"/>
+    </linearGradient>
+    <linearGradient id="snow" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fff"/><stop offset="1" stop-color="#d7eaff"/></linearGradient>
+  </defs>
+  <rect width="192" height="192" rx="42" fill="url(#sky)"/>
+  <path d="M-8 48C22 34 33 51 57 44C78 38 83 21 106 27C129 33 141 21 165 28C181 33 192 28 204 23V58C178 64 163 54 141 59C116 65 99 54 78 62C54 71 34 58 13 65C5 68-1 67-8 64Z" fill="#fff" opacity=".9"/>
+  <path d="M-10 111C16 99 31 112 48 107C68 101 76 86 99 94C120 102 132 91 151 96C171 101 186 91 202 89V132C179 137 160 126 140 134C117 143 102 128 80 139C57 151 33 134 10 143L-10 148Z" fill="#fafdff" opacity=".96"/>
+  <path d="M-8 160C24 143 46 164 67 151C87 139 102 151 122 146C146 140 166 153 201 139V202H-8Z" fill="url(#snow)"/>
+  <g fill="#fff" opacity=".95"><circle cx="24" cy="31" r="2"/><circle cx="58" cy="19" r="1.6"/><circle cx="145" cy="42" r="2"/><circle cx="174" cy="74" r="1.8"/><circle cx="21" cy="90" r="1.7"/><circle cx="155" cy="119" r="2"/><circle cx="44" cy="149" r="1.8"/><circle cx="170" cy="157" r="2"/></g>
+  <g fill="#11151b" stroke="#080b10" stroke-linejoin="round">
+    <path d="M78 55L72 35L88 47C97 42 108 42 117 47L133 32L130 60C140 71 138 91 127 101C117 111 92 111 76 100C63 91 64 70 78 55Z" stroke-width="2"/>
+    <path d="M78 91C64 98 58 111 60 124C64 139 77 144 89 134L96 105Z" stroke-width="2"/>
+    <path d="M119 93C128 105 138 112 151 108C159 104 167 94 172 84C171 101 164 115 152 123C141 130 130 123 120 115Z" stroke-width="2"/>
+    <path d="M82 96C77 113 76 133 82 153C86 162 96 162 101 153L104 119Z" stroke-width="2"/>
+    <path d="M108 99C113 118 119 137 123 155C126 164 136 163 138 153L135 112Z" stroke-width="2"/>
+  </g>
+  <g fill="#f7fbff"><circle cx="79" cy="58" r="2"/><circle cx="91" cy="67" r="2"/><circle cx="112" cy="59" r="2"/><circle cx="123" cy="76" r="2.2"/><circle cx="84" cy="87" r="2"/><circle cx="104" cy="94" r="2.5"/><circle cx="124" cy="101" r="2"/><circle cx="91" cy="116" r="2.5"/><circle cx="130" cy="130" r="2"/></g>
+</svg>

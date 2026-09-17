@@ -6,316 +6,363 @@
     <title>🌸 兮兮的菜单</title>
     <style>
         * { box-sizing: border-box; margin: 0; padding: 0; }
+        html, body {
+            height: 100%;
+        }
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-            background: #f9f7f0;
-            padding: 12px 12px 20px;
-            color: #3e3a36;
+            background: #f2ede6;
+            color: #2f2a28;
+            padding: 10px 0 20px;
         }
-        .container { max-width: 480px; margin: 0 auto; }
+        .container {
+            max-width: 460px;
+            margin: 0 auto;
+            background: rgba(255,255,255,0.9);
+            border-radius: 22px;
+            box-shadow: 0 12px 30px rgba(134, 109, 92, 0.12);
+            padding: 12px 10px 18px;
+        }
 
         h1 {
-            font-size: 2rem;
-            font-weight: 600;
-            color: #d4896a;
-            text-align: center;
-            margin: 6px 0 12px;
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: #272421;
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 6px;
+            gap: 8px;
+            margin: 6px 0 16px;
         }
         h1 small {
-            font-size: 0.8rem;
-            color: #b0a89a;
+            font-size: 0.72rem;
+            color: #867d75;
+            font-weight: 500;
+        }
+
+        .profile-display {
+            display: flex;
+            align-items: center;
+            gap: 9px;
+            padding: 8px 10px;
+            margin-bottom: 10px;
+            border-radius: 15px;
+            background: #fffdfb;
+            border: 1px solid rgba(0,0,0,0.04);
+        }
+        .profile-display .avatar {
+            width: 42px;
+            height: 42px;
+            flex: 0 0 42px;
+            border-radius: 50%;
+            object-fit: cover;
+            display: grid;
+            place-items: center;
+            background: linear-gradient(135deg, #dff3c7, #8cc17d);
+            color: #fff;
+            font-size: 1.05rem;
+            font-weight: 700;
+        }
+        .profile-display .profile-name {
+            min-width: 0;
+            flex: 1;
+            color: #3f3935;
+            font-size: 0.86rem;
+            font-weight: 700;
+        }
+        .profile-display .profile-hint {
+            margin-top: 2px;
+            color: #948b84;
+            font-size: 0.68rem;
             font-weight: 400;
         }
 
-        .upload-card {
-            background: white;
-            border-radius: 20px;
-            padding: 16px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.06);
-            margin-bottom: 16px;
-        }
-        .upload-card .field {
-            margin-bottom: 12px;
-        }
-        .upload-card label {
+        .manage-link {
             display: block;
-            font-weight: 500;
-            font-size: 0.9rem;
-            color: #5e554a;
-            margin-bottom: 4px;
+            text-align: center;
+            padding: 11px 14px;
+            margin-bottom: 14px;
+            border-radius: 14px;
+            background: linear-gradient(135deg, #dff3c7, #bfe2c4);
+            color: #356b36;
+            font-size: 0.86rem;
+            font-weight: 700;
+            text-decoration: none;
         }
-        .upload-card input[type="text"],
-        .upload-card input[type="file"],
-        .upload-card select {
-            width: 100%;
-            padding: 12px 14px;
-            border: 1.5px solid #ddd6cc;
-            border-radius: 16px;
-            font-size: 1rem;
-            background: #fcfaf8;
-            transition: 0.2s;
-            -webkit-appearance: none;
-            appearance: none;
-        }
-        .upload-card input:focus,
-        .upload-card select:focus {
-            outline: none;
-            border-color: #d4896a;
-            background: white;
-        }
-        .upload-card .btn {
-            width: 100%;
-            background: #d4896a;
-            color: white;
-            border: none;
-            padding: 14px;
-            border-radius: 40px;
-            font-size: 1.1rem;
-            font-weight: 600;
-            cursor: pointer;
-            transition: 0.2s;
-            margin-top: 4px;
-        }
-        .upload-card .btn:active {
-            background: #c07354;
-            transform: scale(0.98);
+
+        .menu-layout {
+            display: flex;
+            gap: 12px;
+            align-items: flex-start;
         }
 
         .category-scroll {
+            width: 120px;
+            min-width: 120px;
             display: flex;
-            overflow-x: auto;
-            gap: 8px;
-            padding: 8px 0 12px;
-            white-space: nowrap;
-            -webkit-overflow-scrolling: touch;
-            scrollbar-width: none;
-        }
-        .category-scroll::-webkit-scrollbar {
-            display: none;
+            flex-direction: column;
+            gap: 10px;
+            padding: 8px 4px 8px 0;
+            border-right: 1px solid rgba(62, 54, 44, 0.08);
+            position: sticky;
+            top: 14px;
         }
         .category-item {
-            flex: 0 0 auto;
-            padding: 8px 18px;
-            border-radius: 30px;
-            background: #ede8e0;
+            width: 100%;
+            border: none;
+            background: transparent;
+            color: #3f3a36;
             font-size: 0.9rem;
-            font-weight: 500;
-            color: #3e3a36;
+            font-weight: 600;
+            line-height: 1.3;
+            text-align: left;
+            padding: 8px 6px 8px 10px;
+            border-radius: 12px;
             display: flex;
             align-items: center;
+            justify-content: space-between;
             gap: 6px;
             cursor: pointer;
-            transition: 0.2s;
-            touch-action: manipulation;
-            border: none;
+            transition: all 0.2s ease;
         }
         .category-item .count {
-            background: rgba(0,0,0,0.08);
-            padding: 0 10px;
-            border-radius: 30px;
-            font-size: 0.7rem;
-            line-height: 1.8;
+            min-width: 26px;
+            height: 22px;
+            border-radius: 999px;
+            background: rgba(46, 48, 45, 0.08);
+            color: #5b524a;
+            font-size: 0.68rem;
+            line-height: 22px;
+            text-align: center;
+            padding: 0 8px;
         }
         .category-item.active {
-            background: #d4896a;
-            color: white;
+            background: rgba(130, 187, 105, 0.14);
+            color: #2f2a28;
+            box-shadow: inset 0 0 0 1px rgba(135, 181, 101, 0.15);
+            border-left: 3px solid #7fb86d;
+            padding-left: 7px;
         }
         .category-item.active .count {
-            background: rgba(255,255,255,0.3);
-            color: white;
+            background: rgba(127, 184, 109, 0.2);
+            color: #387a32;
         }
-        .category-item:active {
-            transform: scale(0.94);
+
+        .main-panel {
+            flex: 1;
         }
 
         .section-title {
-            font-size: 1.4rem;
-            font-weight: 500;
-            margin: 18px 0 10px;
-            padding-bottom: 4px;
-            border-bottom: 2px solid #e8e0d6;
+            font-size: 0.98rem;
+            color: #2f2a28;
+            font-weight: 700;
+            margin: 8px 0 14px;
             display: flex;
             align-items: center;
-            gap: 8px;
+            gap: 6px;
+            letter-spacing: 0.02em;
         }
         .section-title .badge {
-            font-size: 0.8rem;
-            background: #d4896a;
-            color: white;
-            padding: 0 14px;
-            border-radius: 30px;
-            line-height: 1.8;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-width: 24px;
+            height: 22px;
+            padding: 0 8px;
+            border-radius: 999px;
+            background: #eef5eb;
+            color: #4f7a49;
+            font-size: 0.7rem;
+            font-weight: 700;
         }
 
         .dish-list {
             display: flex;
             flex-direction: column;
-            gap: 14px;
+            gap: 10px;
         }
         .dish-card {
-            background: white;
-            border-radius: 20px;
-            overflow: hidden;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
             position: relative;
             display: flex;
-            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+            background: #ffffff;
+            border: 1px solid rgba(71,61,52,0.04);
+            border-radius: 18px;
+            padding: 8px;
+            box-shadow: 0 4px 10px rgba(55,40,32,0.04);
         }
         .dish-card img {
-            width: 100%;
-            height: 200px;
+            width: 82px;
+            height: 82px;
             object-fit: cover;
-            background: #edeae4;
+            border-radius: 14px;
+            background: #f3efe9;
+            flex-shrink: 0;
         }
         .dish-card .info {
-            padding: 12px 16px 14px;
+            flex: 1;
+            min-width: 0;
             display: flex;
             flex-direction: column;
-            gap: 6px;
+            gap: 4px;
         }
         .dish-card .name {
-            font-size: 1.2rem;
-            font-weight: 600;
+            font-size: 0.98rem;
+            font-weight: 700;
+            color: #2f2a28;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
         }
         .dish-card .category-tag {
             display: flex;
             align-items: center;
-            gap: 6px;
-            background: #f0ede8;
-            padding: 4px 16px;
-            border-radius: 30px;
-            font-size: 0.9rem;
-            color: #5e554a;
-            width: fit-content;
-            max-width: 100%;
-            touch-action: manipulation;
+            gap: 8px;
+            color: #5d5752;
+            font-size: 0.72rem;
+            min-height: 18px;
         }
         .cat-display {
             cursor: pointer;
-            padding: 2px 6px;
-            border-radius: 12px;
-        }
-        .cat-display:active {
-            background: #d4896a;
-            color: white;
+            padding: 0 6px;
+            border-radius: 10px;
+            line-height: 1.5;
         }
         .cat-select {
-            background: white;
-            border: 1.5px solid #d4896a;
-            border-radius: 30px;
-            padding: 4px 10px;
-            font-size: 0.9rem;
-            outline: none;
-            -webkit-appearance: none;
-            appearance: none;
+            border: 1px solid #dfe6d8;
+            height: 24px;
+            border-radius: 999px;
+            padding: 0 8px;
+            font-size: 0.72rem;
+            background: #fff;
         }
         .dish-card .actions {
             display: flex;
-            flex-wrap: wrap;
+            align-items: center;
             gap: 8px;
-            margin-top: 6px;
+            margin-left: auto;
+        }
+        .dish-card .actions form {
+            display: inline-block;
         }
         .dish-card .actions button,
         .dish-card .actions a {
-            flex: 1 0 auto;
             border: none;
-            padding: 10px 16px;
-            border-radius: 30px;
-            font-size: 0.9rem;
-            font-weight: 600;
+            border-radius: 999px;
+            font-size: 0.72rem;
+            font-weight: 700;
             cursor: pointer;
-            transition: 0.2s;
-            text-align: center;
             text-decoration: none;
-            background: #f0ede8;
-            color: #3e3a36;
-            touch-action: manipulation;
-            min-width: 70px;
+            transition: transform 0.2s ease;
         }
         .dish-card .actions button:active,
-        .dish-card .actions a:active {
-            transform: scale(0.96);
-        }
+        .dish-card .actions a:active { transform: scale(0.96); }
         .dish-card .actions button.today-btn {
-            background: #d4896a;
-            color: white;
+            background: linear-gradient(135deg, #d7efdb, #bfe2c4);
+            color: #3d8748;
+            padding: 8px 10px;
+            min-width: 46px;
+            height: 38px;
+            border-radius: 14px;
         }
         .dish-card .actions button.today-btn.active {
-            background: #6c8b7a;
+            background: linear-gradient(135deg, #8cc17d, #6aaa68);
+            color: white;
         }
         .dish-card .actions button.del-btn {
-            background: #e8d8d8;
-            color: #b35c5c;
+            background: #f7f4f1;
+            color: #5d5752;
+            padding: 8px 10px;
+            min-width: 40px;
+            height: 38px;
+            border-radius: 14px;
         }
 
         .today-tag {
             position: absolute;
-            top: 12px;
-            right: 12px;
-            background: #d4896a;
-            color: white;
-            padding: 4px 16px;
-            border-radius: 30px;
-            font-size: 0.8rem;
-            font-weight: bold;
+            top: 8px;
+            left: 8px;
+            background: rgba(255,255,255,0.9);
+            border: 1px solid rgba(79,122,73,0.18);
+            color: #4b7b48;
+            font-size: 0.58rem;
+            font-weight: 700;
+            padding: 4px 8px;
+            border-radius: 999px;
         }
 
         .empty-tip {
             text-align: center;
-            color: #b0a89a;
-            font-size: 1.1rem;
-            padding: 30px 0;
-        }
-
-        footer {
-            text-align: center;
-            margin-top: 24px;
-            color: #bfb7ab;
-            font-size: 0.8rem;
+            font-size: 0.84rem;
+            color: #948b84;
+            padding: 20px 0;
         }
 
         .note-box {
-            background: white;
+            background: #fffdfb;
+            border: 1px solid rgba(0,0,0,0.04);
             border-radius: 16px;
-            padding: 12px 16px;
-            margin: 8px 0 12px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+            padding: 10px;
+            margin: 0 0 14px;
+            box-shadow: 0 4px 8px rgba(66, 57, 46, 0.03);
         }
         .note-box form {
             display: flex;
             gap: 8px;
             align-items: center;
-            flex-wrap: wrap;
         }
         .note-box input[type="text"] {
             flex: 1;
-            padding: 10px 14px;
-            border-radius: 30px;
-            border: 1.5px solid #ddd6cc;
-            font-size: 0.95rem;
-            background: #fcfaf8;
-            min-width: 150px;
+            min-width: 0;
+            border: 1px solid #e7dfd7;
+            background: #fbf8f5;
+            border-radius: 999px;
+            padding: 9px 12px;
+            font-size: 0.8rem;
         }
         .note-box button {
             border: none;
-            background: #d4896a;
-            color: white;
-            padding: 10px 20px;
-            border-radius: 30px;
-            font-size: 0.95rem;
-            font-weight: 600;
+            background: #d0efc9;
+            color: #2c6731;
+            padding: 9px 12px;
+            border-radius: 999px;
+            font-size: 0.8rem;
+            font-weight: 700;
             cursor: pointer;
-            white-space: nowrap;
         }
         .note-box .note-display {
-            margin-top: 6px;
-            color: #5e554a;
-            font-size: 0.95rem;
-            padding: 0 4px;
+            margin-top: 8px;
+            color: #5d5752;
+            font-size: 0.76rem;
+            line-height: 1.5;
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 18px;
+            color: #a9a19a;
+            font-size: 0.7rem;
+        }
+
+        @media (max-width: 420px) {
+            .container {
+                border-radius: 0;
+                max-width: 100%;
+                padding-left: 8px;
+                padding-right: 8px;
+            }
+            .menu-layout {
+                gap: 8px;
+            }
+            .category-scroll {
+                width: 104px;
+                min-width: 104px;
+            }
+            .category-item {
+                font-size: 0.82rem;
+                padding-left: 8px;
+            }
         }
     </style>
 </head>
@@ -323,136 +370,126 @@
 <div class="container">
     <h1><span>🌸</span> 兮兮的菜单 <small>· 记录每一餐</small></h1>
 
-    <!-- 上传卡片 -->
-    <div class="upload-card">
-        <div class="field">
-            <label for="dishName">📝 菜名</label>
-            <input type="text" id="dishName" name="dish_name" form="uploadForm" placeholder="例如：红烧肉" required>
+    <div class="profile-display">
+        {% if profile.avatar_path %}
+        <img class="avatar" src="{{ url_for('static', filename='uploads/' + profile.avatar_path.split('/')[-1]) }}" alt="{{ profile.nickname }}的头像">
+        {% else %}
+        <div class="avatar" aria-label="默认头像">{{ profile.nickname[:1] }}</div>
+        {% endif %}
+        <div class="profile-name">
+            {{ profile.nickname }}
+            <div class="profile-hint">今天也要好好吃饭</div>
         </div>
-        <div class="field">
-            <label for="dishImage">🖼️ 图片</label>
-            <input type="file" id="dishImage" name="dish_image" form="uploadForm" accept="image/*" required>
-        </div>
-        <div class="field">
-            <label for="dishCategory">🏷️ 分类</label>
-            <select id="dishCategory" name="category" form="uploadForm">
-                {% for cat in categories %}
-                <option value="{{ cat }}">{{ cat }}</option>
-                {% endfor %}
-            </select>
-        </div>
-        <form id="uploadForm" method="POST" enctype="multipart/form-data">
-            <button type="submit" class="btn">➕ 上传</button>
-        </form>
     </div>
 
-    <!-- 分类筛选（横向滚动） -->
-    <div class="category-scroll" id="categoryScroll">
-        <div class="category-item active" data-category="all" data-name="全部">
-            📋 全部 <span class="count">{{ total_count }}</span>
-        </div>
-        {% for cat in categories %}
-        <div class="category-item" data-category="{{ cat }}" data-name="{{ cat }}">
-            {{ cat.split()[0] }} {{ cat.split()[1] }} <span class="count">{{ category_counts.get(cat, 0) }}</span>
-        </div>
-        {% endfor %}
-    </div>
+    <a class="manage-link" href="{{ url_for('manage') }}">➕ 管理菜品和用户头像</a>
 
-    <!-- 今日菜单 -->
-    <div class="section-title">
-        🌟 今日菜单 <span class="badge">{{ today_dishes|length }}</span>
-    </div>
-
-    <!-- 今日备注（全局） -->
-    <div class="note-box">
-    <form method="POST" action="{{ url_for('update_daily_note') }}">
-        <input type="text" name="daily_note" placeholder="输入今日备注" value="">
-        <button type="submit">保存备注</button>
-    </form>
-    {% if daily_note_content %}
-    <div class="note-display">📝 当前备注：{{ daily_note_content }}</div>
-    {% else %}
-    <div class="note-display" style="color:#b0a89a;">暂无备注</div>
-    {% endif %}
-</div>
-
-    <!-- 今日菜品列表 -->
-    <div class="dish-list" id="today-list">
-        {% if today_dishes %}
-            {% for id, name, image_path, category, note in today_dishes %}
-            <div class="dish-card" data-category="{{ category }}">
-                <span class="today-tag">今日</span>
-                <img src="{{ url_for('static', filename='uploads/' + image_path.split('/')[-1]) }}" alt="{{ name }}" loading="lazy">
-                <div class="info">
-                    <div class="name">{{ name }}</div>
-                    <div class="category-tag">
-                        <span class="cat-display" data-id="{{ id }}">{{ category }}</span>
-                        <form method="POST" action="{{ url_for('update_category', dish_id=id) }}" class="cat-form" style="display:inline; margin:0;">
-                            <select name="category" class="cat-select" style="display:none;">
-                                {% for cat in categories %}
-                                <option value="{{ cat }}" {% if cat == category %}selected{% endif %}>{{ cat }}</option>
-                                {% endfor %}
-                            </select>
-                        </form>
-                    </div>
-                    <div class="actions">
-                        <form method="POST" action="{{ url_for('toggle_today', dish_id=id) }}" style="display:inline;">
-                            <button type="submit" class="today-btn active">移除今日</button>
-                        </form>
-                        <form method="POST" action="{{ url_for('delete_dish', dish_id=id) }}" style="display:inline;" onsubmit="return confirm('确定要删除“{{ name }}”吗？');">
-                            <button type="submit" class="del-btn">🗑️ 删除</button>
-                        </form>
-                    </div>
-                </div>
+    <div class="menu-layout">
+        <div class="category-scroll" id="categoryScroll">
+            <div class="category-item active" data-category="all" data-name="全部">
+                <span>全部</span> <span class="count">{{ total_count }}</span>
+            </div>
+            {% for cat in categories %}
+            <div class="category-item" data-category="{{ cat }}" data-name="{{ cat }}">
+                <span>{{ cat }}</span> <span class="count">{{ category_counts.get(cat, 0) }}</span>
             </div>
             {% endfor %}
-        {% else %}
-            <div class="empty-tip">🍽️ 今日菜单为空</div>
-        {% endif %}
-    </div>
+        </div>
 
-    <!-- 全部菜品 -->
-    <div class="section-title">
-        📋 <span id="category-title">全部</span>菜品 <span class="badge" id="all-count">{{ total_count }}</span>
-    </div>
-    <div class="dish-list" id="all-list">
-        {% if all_dishes %}
-            {% for id, name, image_path, is_today, category, note in all_dishes %}
-            <div class="dish-card" data-category="{{ category }}">
-                {% if is_today %}
-                <span class="today-tag">今日</span>
+        <div class="main-panel">
+            <div class="section-title">
+                <span>🌟</span> 今日菜单 <span class="badge">{{ today_dishes|length }}</span>
+            </div>
+
+            <div class="note-box">
+                <form method="POST" action="{{ url_for('update_daily_note') }}">
+                    <input type="text" name="daily_note" placeholder="输入今日备注" value="">
+                    <button type="submit">保存备注</button>
+                </form>
+                {% if daily_note_content %}
+                <div class="note-display">📝 当前备注：{{ daily_note_content }}</div>
+                {% else %}
+                <div class="note-display" style="color:#9a938c;">暂无备注</div>
                 {% endif %}
-                <img src="{{ url_for('static', filename='uploads/' + image_path.split('/')[-1]) }}" alt="{{ name }}" loading="lazy">
-                <div class="info">
-                    <div class="name">{{ name }}</div>
-                    <div class="category-tag">
-                        <span class="cat-display" data-id="{{ id }}">{{ category }}</span>
-                        <form method="POST" action="{{ url_for('update_category', dish_id=id) }}" class="cat-form" style="display:inline; margin:0;">
-                            <select name="category" class="cat-select" style="display:none;">
-                                {% for cat in categories %}
-                                <option value="{{ cat }}" {% if cat == category %}selected{% endif %}>{{ cat }}</option>
-                                {% endfor %}
-                            </select>
-                        </form>
-                    </div>
-                    <div class="actions">
-                        <form method="POST" action="{{ url_for('toggle_today', dish_id=id) }}" style="display:inline;">
-                            {% if is_today %}
-                            <button type="submit" class="today-btn active">移除今日</button>
-                            {% else %}
-                            <button type="submit" class="today-btn">加入今日</button>
-                            {% endif %}
-                        </form>
-                        <form method="POST" action="{{ url_for('delete_dish', dish_id=id) }}" style="display:inline;" onsubmit="return confirm('确定要删除“{{ name }}”吗？');">
-                            <button type="submit" class="del-btn">🗑️ 删除</button>
-                        </form>
-                    </div>
-                </div>
             </div>
-            {% endfor %}
-        {% else %}
-            <div class="empty-tip">🍽️ 还没有菜品</div>
-        {% endif %}
+
+            <div class="dish-list" id="today-list">
+                {% if today_dishes %}
+                    {% for id, name, image_path, category, note in today_dishes %}
+                    <div class="dish-card" data-category="{{ category }}">
+                        <span class="today-tag">今日</span>
+                        <img src="{{ url_for('static', filename='uploads/' + image_path.split('/')[-1]) }}" alt="{{ name }}" loading="lazy">
+                        <div class="info">
+                            <div class="name">{{ name }}</div>
+                            <div class="category-tag">
+                                <span class="cat-display" data-id="{{ id }}">{{ category }}</span>
+                                <form method="POST" action="{{ url_for('update_category', dish_id=id) }}" class="cat-form" style="display:inline; margin:0;">
+                                    <select name="category" class="cat-select" style="display:none;">
+                                        {% for cat in categories %}
+                                        <option value="{{ cat }}" {% if cat == category %}selected{% endif %}>{{ cat }}</option>
+                                        {% endfor %}
+                                    </select>
+                                </form>
+                            </div>
+                            <div class="actions">
+                                <form method="POST" action="{{ url_for('toggle_today', dish_id=id) }}" style="display:inline;">
+                                    <button type="submit" class="today-btn active">移除今日</button>
+                                </form>
+                                <form method="POST" action="{{ url_for('delete_dish', dish_id=id) }}" style="display:inline;" onsubmit="return confirm('确定要删除“{{ name }}”吗？');">
+                                    <button type="submit" class="del-btn">🗑️ 删除</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                {% else %}
+                    <div class="empty-tip">🍽️ 今日菜单为空</div>
+                {% endif %}
+            </div>
+
+            <div class="section-title" style="margin-top: 18px;">
+                <span>📋</span> <span id="category-title">全部</span>菜品 <span class="badge" id="all-count">{{ total_count }}</span>
+            </div>
+                    <div class="dish-list" id="all-list">
+                {% if all_dishes %}
+                    {% for id, name, image_path, is_today, category, note in all_dishes %}
+                    <div class="dish-card" data-category="{{ category }}">
+                        {% if is_today %}
+                        <span class="today-tag">今日</span>
+                        {% endif %}
+                        <img src="{{ url_for('static', filename='uploads/' + image_path.split('/')[-1]) }}" alt="{{ name }}" loading="lazy">
+                        <div class="info">
+                            <div class="name">{{ name }}</div>
+                            <div class="category-tag">
+                                <span class="cat-display" data-id="{{ id }}">{{ category }}</span>
+                                <form method="POST" action="{{ url_for('update_category', dish_id=id) }}" class="cat-form" style="display:inline; margin:0;">
+                                    <select name="category" class="cat-select" style="display:none;">
+                                        {% for cat in categories %}
+                                        <option value="{{ cat }}" {% if cat == category %}selected{% endif %}>{{ cat }}</option>
+                                        {% endfor %}
+                                    </select>
+                                </form>
+                            </div>
+                            <div class="actions">
+                                <form method="POST" action="{{ url_for('toggle_today', dish_id=id) }}" style="display:inline;">
+                                    {% if is_today %}
+                                    <button type="submit" class="today-btn active">移除今日</button>
+                                    {% else %}
+                                    <button type="submit" class="today-btn">加入今日</button>
+                                    {% endif %}
+                                </form>
+                                <form method="POST" action="{{ url_for('delete_dish', dish_id=id) }}" style="display:inline;" onsubmit="return confirm('确定要删除“{{ name }}”吗？');">
+                                    <button type="submit" class="del-btn">🗑️ 删除</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                {% else %}
+                    <div class="empty-tip">🍽️ 还没有菜品</div>
+                {% endif %}
+            </div>
+        </div>
     </div>
 
     <footer>兮兮的菜单 · 用 ❤️ 打造</footer>
