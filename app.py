@@ -1,10 +1,14 @@
 import os
 import sqlite3
-import psycopg2
-from flask import Flask, request, render_template, redirect, url_for
+from flask import Flask, request, render_template, redirect, url_for, send_from_directory
 from werkzeug.utils import secure_filename
 from datetime import datetime, date
 from collections import Counter
+
+try:
+    import psycopg2
+except ImportError:
+    psycopg2 = None
 #todo再加个素菜专栏，加头像
 #todo热菜：青椒肉丝，芹菜肉丝，黄瓜炒肉，莴笋肉片，可乐鸡翅，
 #todo素菜：清炒时蔬，香菇青菜，番茄鸡蛋，清炒土豆丝，韭黄鸡蛋，
@@ -36,6 +40,8 @@ last_clean_date = None
 # ---------- 数据库连接 ----------
 def get_db_connection():
     if 'DATABASE_URL' in os.environ:
+        if psycopg2 is None:
+            raise RuntimeError('DATABASE_URL 已设置，但 psycopg2 未正确安装')
         DATABASE_URL = os.environ['DATABASE_URL']
         conn = psycopg2.connect(DATABASE_URL, sslmode='require')
         return conn
@@ -146,6 +152,17 @@ init_db()
 # ---------- 辅助函数 ----------
 def allowed_file(filename):
     return '.' in filename and filename.rsplit('.', 1)[1].lower() in app.config['ALLOWED_EXTENSIONS']
+
+
+# ---------- PWA 安装页 ----------
+@app.route('/pwa-final/')
+def pwa_index():
+    return send_from_directory(os.path.join(app.root_path, 'pwa-final'), 'index.html')
+
+
+@app.route('/pwa-final/<path:filename>')
+def pwa_asset(filename):
+    return send_from_directory(os.path.join(app.root_path, 'pwa-final'), filename)
 
 # ---------- 路由 ----------
 @app.route('/')

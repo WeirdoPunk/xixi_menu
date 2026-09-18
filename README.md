@@ -21,7 +21,7 @@
 - Windows、Linux 或 macOS
 - 本地默认使用 SQLite，不需要额外安装数据库
 
-项目当前运行时配置为 Python 3.10.11，见 `runtime.txt`。
+项目当前运行时配置为 Python 3.13.5，见 `runtime.txt`。
 
 ## 本地运行
 
